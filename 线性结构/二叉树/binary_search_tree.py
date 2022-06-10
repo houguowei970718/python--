@@ -1,11 +1,15 @@
 from lib2to3.pytree import Node
+from logging import root
 import random
+
+
 class BinartTree:
     def __init__(self, data):
         self.data = data
         self.left_child = None
         self.right_child = None
         self.parent_Node = None
+
 
 class BinartSearchTree:
     def __init__(self, ls=None):
@@ -154,39 +158,44 @@ class BinartSearchTree:
                     self.delete_one_case(mix_node)
 
 
-
-
-
 class BinartSearchTree2:
     def __init__(self) -> None:
-        
-        self.root=None
 
+        self.root = None
 
     # 先序 访问根节点---->左子树----->右子树
-
-    def preorder(self,root):
-
+    def preorder(self, root):
         if root:
-            print(root.data,end=",")
+            print(root.data, end=",")
             self.preorder(root.left_child)
             self.preorder(root.right_child)
-
-
     # 中序 先左子树---->根节点---->右子树
-    def MiddleOrder(self,root):
+
+    def MiddleOrder(self, root):
         if root:
             self.MiddleOrder(root.left_child)
-            print(root.data,end=",")
+            print(root.data, end=",")
             self.MiddleOrder(root.right_child)
     # 后序  先左子树  ---->右子树---->根节点
-    def Afterword(self,root):
+
+    def Afterword(self, root):
         if root:
             self.preorder(root.left_child)
             self.preorder(root.right_child)
-            print(root.data,end=",")
+            print(root.data, end=",")
 
-
+    # 查询节点
+    def QueryNode(self, val):
+        if self.root is None:
+            return
+        while self.root:
+            if self.root.data < val:
+                self.QueryNode(self.root.right_child, val)
+            elif self.root.data > val:
+                self.QueryNode(self.root.left_child, val)
+            else:
+                return self.root
+    
 
 li = [17, 5, 35, 2, 11, 29, 38, 9, 16, 8]
 
