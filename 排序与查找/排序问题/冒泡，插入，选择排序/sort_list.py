@@ -15,7 +15,7 @@
 
 Author: 小侯
 Date: 2022-05-25 11:05:13
-LastEditTime: 2022-06-07 15:13:00
+LastEditTime: 2022-06-10 11:44:01
 LastEditors:    
 Description: 
 FilePath: \python算法\排序与查找\排序问题\冒泡，插入，选择排序\sort_list.py
@@ -121,5 +121,5 @@ def insert_sort(list_Data):
 if __name__ == '__main__':
     ls = [9,6,8,5,4,10,2,3,7]
     print(ls)
-    selection_sort(ls)
+    Bubble_Sort(ls)
     print(ls)

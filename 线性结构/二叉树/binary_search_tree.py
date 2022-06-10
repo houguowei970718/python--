@@ -162,9 +162,9 @@ class BinartSearchTree:
 li = [17, 5, 35, 2, 11, 29, 38, 9, 16, 8]
 
 
-tree = BinartSearch(li)
+tree = BinartSearchTree(li)
 # print("中序\n")
 # tree.midTree(tree.root)
 
 
-tree.preorder(tree.root)
+tree.preTree(tree.root)
