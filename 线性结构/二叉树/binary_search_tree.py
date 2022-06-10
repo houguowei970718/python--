@@ -1,5 +1,4 @@
-from lib2to3.pytree import Node
-from logging import root
+
 import random
 
 
@@ -158,120 +157,14 @@ class BinartSearchTree:
                     self.delete_one_case(mix_node)
 
 
-class BinartSearchTree2:
-    def __init__(self) -> None:
-
-        self.root = None
-
-    # 先序 访问根节点---->左子树----->右子树
-    def preorder(self, root):
-        if root:
-            print(root.data, end=",")
-            self.preorder(root.left_child)
-            self.preorder(root.right_child)
-    # 中序 先左子树---->根节点---->右子树
-
-    def MiddleOrder(self, root):
-        if root:
-            self.MiddleOrder(root.left_child)
-            print(root.data, end=",")
-            self.MiddleOrder(root.right_child)
-    # 后序  先左子树  ---->右子树---->根节点
-
-    def Afterword(self, root):
-        if root:
-            self.preorder(root.left_child)
-            self.preorder(root.right_child)
-            print(root.data, end=",")
-
-    # 查询节点
-    def QueryNode(self, val):
-        if self.root is None:
-            return
-        while self.root:
-            if self.root.data < val:
-                self.QueryNode(self.root.right_child, val)
-            elif self.root.data > val:
-                self.QueryNode(self.root.left_child, val)
-            else:
-                return self.root
-
-    def ord_insert(self, val):
-        if self.root is None:
-            self.root = BinartTree(val)
-
-        while True:
-            if self.root.data < val:
-                if self.root.right_child:
-                    self.root = self.root.right_child
-                else:
-                    self.root = BinartTree(val)
-                    self.root.right_child = self.root
-            elif self.root.data > val:
-                if self.root.left_child:
-                    self.root = self.root.left_child
-                else:
-                    self.root = BinartTree(val)
-                    self.root.left_child = self.root
-                    return
-            else:
-                return
-
-    def delete_one_case(self, current_node):
-        if current_node.parent_Node is None:
-            self.root = None
-        if current_node == current_node.parent_Node.left_child:
-            current_node.parent_Node.left_child = None
-        else:
-            current_node.parent_Node.right_child = None
-
-    def delete_two_case(self, current_node):
-
-        if current_node.parent_Node is None:
-            self.root = current_node.left_child
-            current_node.left_child.parent_None = None
-
-        elif current_node == current_node.parent_Node.left_child:
-            current_node.parent_Node.left_child = current_node.left_child
-            current_node.left_child.parent_Node = current_node.parent_Node
-
-        else:
-            current_node.parent_Node.right_child = current_node.right_child
-            current_node.right_child.parent_Node = current_node.parent_Node
-
-    def delete(self, val):
-        if self.root:
-            raise IndexError("树 是 空 得")
-        else:
-            current_node = self.QueryNode(val)
-            if not current_node.left_child and not current_node.right_child:
-                self.delete_one_case(val)
-            elif current_node.left_child:
-                self.delete_two_case(val)
-            elif current_node.right_child:
-                self.delete_two_case(val)
-            else:
-
-                mix_node = current_node.right_child
-
-                while mix_node.left_child:
-                    mix_node = mix_node.left_child
-                    current_node.data = mix_node.data
-                if mix_node.right_child:
-                    self.delete_two_case(mix_node)
-                else:
-                    self.delete_two_case(mix_node)
 
 
 li = [17, 5, 35, 2, 11, 29, 38, 9, 16, 8]
 
 
-tree = BinartSearchTree(li)
+tree = BinartSearch(li)
 # print("中序\n")
 # tree.midTree(tree.root)
-tree.midTree(tree.root)
-print(" ")
 
-tree.delete(5)
-tree.delete(2)
-tree.midTree(tree.root)
+
+tree.preorder(tree.root)
