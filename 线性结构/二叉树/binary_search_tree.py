@@ -105,6 +105,7 @@ class BinartSearchTree:
             node.parent_Node.left_child = None
         else:
             node.parent_Node.right_child = None
+
     # 第二种是只有一个右孩子或者左孩子
 
     def delete_two_case(self, node):
